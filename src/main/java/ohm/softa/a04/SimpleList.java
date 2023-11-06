@@ -1,19 +1,21 @@
 package ohm.softa.a04;
 
-public interface SimpleList extends Iterable {
+public interface SimpleList<T> extends Iterable<T> {
 	/**
 	 * Add a given object to the back of the list.
 	 */
-	void add(Object o);
+	void add(T item);
 
 	/**
 	 * @return current size of the list
 	 */
 	int size();
 
+	void addDefault(Class<T> cl) throws InstantiationException, IllegalAccessException;
+
 	/**
 	 * Generate a new list using the given filter instance.
 	 * @return a new, filtered list
 	 */
-	SimpleList filter(SimpleFilter filter);
+	SimpleList<T> filter(SimpleFilter<T> filter);
 }
